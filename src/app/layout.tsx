@@ -31,8 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-[100vw] overflow-x-hidden`}
       >
         <RootProvider>
-          <Header />
-          {children}
+          <div id="root">
+            <Header />
+            {children}
+          </div>
         </RootProvider>
       </body>
     </html>

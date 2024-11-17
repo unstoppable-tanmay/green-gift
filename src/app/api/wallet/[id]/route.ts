@@ -6,9 +6,9 @@ import { z } from "zod";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const data = await prisma.wallet.findUnique({
       where: {
@@ -42,9 +42,9 @@ const PutBodySchema = z.object({
 
 export const PUT = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const body = await request.json();
     const parsedBody = PutBodySchema.parse(body);

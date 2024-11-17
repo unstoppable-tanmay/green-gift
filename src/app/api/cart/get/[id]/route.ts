@@ -6,9 +6,9 @@ import { z } from "zod";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const data = await prisma.cart.findUnique({
       where: {
@@ -59,9 +59,9 @@ const PostBodySchema = z.object({
 
 export const POST = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const body = await request.json();
     const parsedBody = PostBodySchema.parse(body);
@@ -109,9 +109,9 @@ const PutBodySchema = z.object({
 
 export const PUT = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const body = await request.json();
     const parsedBody = PutBodySchema.parse(body);
@@ -159,9 +159,9 @@ const DeleteBodySchema = z.object({
 
 export const DELETE = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = params;
+  const { id } = await params;
   try {
     const body = await request.json();
     const parsedBody = DeleteBodySchema.parse(body);

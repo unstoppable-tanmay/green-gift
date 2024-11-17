@@ -1,4 +1,4 @@
-import { hashSync } from "bcrypt";
+import { hashSync } from "bcryptjs";
 import prisma from "./prisma";
 
 import data from "./data/data.json";

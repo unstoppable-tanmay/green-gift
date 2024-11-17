@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "prisma/seed.ts",
-    "middleware.ts"
+    "middleware.ts",
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }

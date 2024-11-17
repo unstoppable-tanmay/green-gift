@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BarLoader, ScaleLoader } from "react-spinners";
 import { useAuth } from "@/provider/auth-provider/auth-provider";
 import { toast } from "react-toastify";
-import { Address, Product, User } from "@prisma/client";
+import { Address, Product, User, Wallet } from "@prisma/client";
 import { errorType, ResponseType } from "@/types/common-types";
 import { useRouter } from "next/navigation";
 
@@ -25,6 +25,7 @@ type UserResponseType = User & {
   //   items: WishlistItem[];
   //   sharedUsers: User[];
   // };
+  Wallet: Wallet[];
   recentlyViewed: Product[];
 };
 

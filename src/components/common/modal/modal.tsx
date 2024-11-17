@@ -50,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({
         {children}
       </div>
     </div>,
-    document.body
+    document.getElementById("root") as HTMLElement
   );
 };
 

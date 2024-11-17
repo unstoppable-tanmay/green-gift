@@ -1,7 +1,7 @@
 import prisma from "../../../../../prisma/prisma";
 import { ResponseType } from "@/types/common-types";
 import { User } from "@prisma/client";
-import { compareSync } from "bcrypt";
+import { compareSync } from "bcryptjs";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";

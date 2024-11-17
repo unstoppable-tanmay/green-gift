@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import prisma from "../../prisma/prisma";
-import { hashSync, genSaltSync, compareSync } from "bcrypt";
+import { hashSync, genSaltSync, compareSync } from "bcryptjs";
 import { jwtVerify, SignJWT } from "jose";
 
 const salt = genSaltSync(10);
