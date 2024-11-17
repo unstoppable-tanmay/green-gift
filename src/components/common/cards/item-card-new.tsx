@@ -36,7 +36,7 @@ const ItemCard = ({ product }: { product: Product }) => {
       });
   };
   return (
-    <div className="w-[clamp(150px,180px,300px)] sm:w-[clamp(150px,200px,300px)] md:w-[clamp(150px,260px,300px)] aspect-[1/1.38] max-sm:m-0.5 m-2 flex flex-col">
+    <div className="w-[clamp(150px,160px,300px)] sm:w-[clamp(150px,200px,300px)] md:w-[clamp(150px,260px,300px)] aspect-[1/1.38] max-sm:m-0.5 m-2 flex flex-col">
       <div className="top flex h-[11%]">
         <div
           className="left rounded-t-2xl h-full w-[65%] bg-[#C4D3CF] relative after:content-[' '] 
@@ -51,7 +51,7 @@ const ItemCard = ({ product }: { product: Product }) => {
           <div className="but1 rounded-full h-full flex-1 hover:flex-[1.2] duration-200 bg-gray-100 flex items-center justify-center">
             <FaHeart className="max-sm:w-3 max-sm:h-3 w-5 h-5 text-gray-500" />
           </div>
-          <div className="but1 rounded-full h-full flex-1 hover:flex-[1.2] duration-200 bg-gray-100 flex gap-1 items-center justify-center max-sm:text-[10px] text-xs">
+          <div className="but1 rounded-full h-full flex-1 hover:flex-[1.2] duration-200 bg-gray-100 flex gap-1 items-center justify-center max-sm:text-[8px] text-xs">
             {product.stars}
             <FaStar className="text-yellow-400" />
           </div>
@@ -81,7 +81,7 @@ const ItemCard = ({ product }: { product: Product }) => {
       </div>
       <div className="bottom flex h-[13%]">
         <div
-          className="left max-sm:text-xs max-md:text-sm rounded-xl flex-1 m-1 bg-gray-100 hover:bg-gray-200 duration-200 hover:font-semibold font-medium cursor-pointer peer flex items-center justify-center relative"
+          className="left max-sm:text-[10px] max-md:text-sm rounded-xl flex-1 m-1 bg-gray-100 hover:bg-gray-200 duration-200 hover:font-semibold font-medium cursor-pointer peer flex items-center justify-center relative"
           onClick={addToCart}
         >
           {addToCartLoading && (
@@ -101,7 +101,7 @@ const ItemCard = ({ product }: { product: Product }) => {
               onClick={() => {
                 router.push(`/orders/new/${product?.id}`);
               }}
-              className="button max-sm:text-xs max-md:text-sm bg-white flex items-center justify-center rounded-xl font-medium hover:font-semibold w-full h-full cursor-pointer"
+              className="button max-sm:text-[10px] max-md:text-sm bg-white flex items-center justify-center rounded-xl font-medium hover:font-semibold w-full h-full cursor-pointer"
             >
               Buy Now
             </div>

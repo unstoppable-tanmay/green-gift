@@ -22,7 +22,7 @@ export default function App() {
   const fetchProducts = async () => {
     const allProductsResponse = await fetch("/api/products", {
       method: "POST",
-      body: JSON.stringify({ name: undefined, page: 1, size: 10 }),
+      body: JSON.stringify({ name: undefined, page: page - 1, size: size }),
     });
     const allProducts = (await allProductsResponse.json()) as ResponseType<{
       products: Product[];
@@ -85,7 +85,7 @@ export default function App() {
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
-        className="w-[100%] h-[50vh]"
+        className="w-[100%] max-sm:h-[60vh] h-[50vh]"
         loop
         autoplay={{
           delay: 2500,
@@ -172,7 +172,7 @@ export default function App() {
       <h2 className="font-poppins font-semibold text-2xl px-2.5 md:px-7 mt-4 md:mt-8">
         Gift Green
       </h2>
-      <div className="flex gap-1 md:gap-8 flex-wrap justify-between px-2.5 md:px-7">
+      <div className="flex max-sm:gap-2 gap-5 md:gap-8 flex-wrap justify-center md:justify-between px-2.5 md:px-7">
         {products?.products.map((product) => (
           <ItemCardNew key={product.id} product={product} />
         ))}
@@ -187,13 +187,14 @@ export default function App() {
           >
             <MdChevronLeft className="w-6 h-6" />
           </div>
-          <div className="font-semibold">{`Page ${page} Of ${Math.floor(
+          <div className="font-semibold">{`Page ${page} Of ${Math.ceil(
             (products?.totalCount ?? 10) / size
           )}`}</div>
           <div
             className="right w-8 aspect-square cursor-pointer flex items-center justify-center rounded-xl bg-gray-200"
             onClick={() => {
-              if (page < (products?.totalCount ?? 10) / size) setPage(page + 1);
+              if (page <= (products?.totalCount ?? 10) / size)
+                setPage(page + 1);
             }}
           >
             <MdChevronRight className="w-6 h-6" />

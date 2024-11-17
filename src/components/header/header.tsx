@@ -23,6 +23,8 @@ import { toast } from "react-toastify";
 import Categories from "../modals/categories-modal";
 import Cart from "../cart";
 import Modal from "../common/modal/modal";
+import { RiMenu5Line } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const [drawer, setDrawer] = useState(false);
@@ -76,7 +78,7 @@ const Header = () => {
       />
       <div className="flex justify-between items-center p-4 pt-2 pr-0 font-poppins relative">
         <div className="max-sm:hidden text-lg font-semibold">
-          {user?.name ? "Hi " + user?.name + "!" : "Hi there!"}
+          {user?.name ? "Hi " + user?.name.split(" ")[0] + "!" : "Hi there!"}
         </div>
         <img
           src="https://www.giftagreen.com/cdn/shop/files/gift-a-green-logo-transparent_1000x1000.png?v=1634653122"
@@ -102,8 +104,14 @@ const Header = () => {
               )}
               onClick={() => setDrawer((prev) => !prev)}
             >
-              <div className="user w-8 aspect-square rounded-full border-2 border-gray-700 shadow-sm flex items-center justify-center">
-                {getInitials(user?.name ?? "")}
+              <div className="user w-8 aspect-square rounded-full border-2 border-gray-700 shadow-sm flex items-center justify-center pointer-events-none">
+                {isAuthenticated ? (
+                  getInitials(user?.name ?? "")
+                ) : drawer ? (
+                  <IoClose className="w-5 h-5 text-red-500" />
+                ) : (
+                  <RiMenu5Line className="w-5 h-5" />
+                )}
               </div>
             </div>
 
@@ -211,7 +219,7 @@ const Header = () => {
             <div className="container relative w-full h-full bg-white rounded-b-2xl shadow-md flex">
               <div
                 className={clsx(
-                  "pt-2 rounded-b-full p-1 duration-150 absolute max-sm:right-8 right-5 bottom-0 z-[-10]",
+                  "pt-2 rounded-b-full p-1 duration-150 absolute max-sm:right-16 right-7 bottom-0 z-[-10]",
                   !cart
                     ? "hover:translate-y-[100%] bg-gray-200"
                     : "bg-gray-400",
@@ -221,14 +229,13 @@ const Header = () => {
               >
                 <div
                   className={clsx(
-                    "user w-8 aspect-square p-1 rounded-full flex items-center justify-center",
-                    cart ? "bg-red-500" : "bg-white"
+                    "user w-8 aspect-square p-1 rounded-full flex items-center justify-center bg-white"
                   )}
                 >
                   {!cart ? (
                     <CiShoppingCart className="w-5 h-5" />
                   ) : (
-                    <CiCircleRemove className="w-5 h-5 text-white font-bold" />
+                    <IoClose className="w-5 h-5 text-red-500" />
                   )}
                 </div>
               </div>
@@ -246,7 +253,8 @@ const Header = () => {
         >
           <div className="w-[clamp(200px,600px,90vw)] h-[130px] ">
             <div className="state p-3 text-lg">
-              Total Balance in your wallet is {user?.Wallet[0].balance} rupees.
+              Total Balance in your wallet is{" "}
+              {user?.Wallet && user.Wallet[0].balance} rupees.
             </div>
             <div className="flex justify-end">
               <button className="appearance-none px-2 py-1 rounded-lg bg-gray-300 hover:bg-gray-400">

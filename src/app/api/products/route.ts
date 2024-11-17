@@ -19,12 +19,18 @@ export const POST = async (request: NextRequest) => {
     const [data, totalCount] = await Promise.all([
       prisma.product.findMany({
         where: {
-          name: {
-            contains: parsedBody.name,
-          },
-          Category: {
-            id: parsedBody.category,
-          },
+          AND: [
+            {
+              name: {
+                contains: parsedBody.name,
+              },
+            },
+            {
+              Category: {
+                id: parsedBody.category,
+              },
+            },
+          ],
         },
         include: {
           Category: true,
@@ -34,12 +40,18 @@ export const POST = async (request: NextRequest) => {
       }),
       prisma.product.count({
         where: {
-          name: {
-            contains: parsedBody.name,
-          },
-          Category: {
-            id: parsedBody.category,
-          },
+          AND: [
+            {
+              name: {
+                contains: parsedBody.name,
+              },
+            },
+            {
+              Category: {
+                id: parsedBody.category,
+              },
+            },
+          ],
         },
       }),
     ]);

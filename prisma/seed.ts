@@ -1,13 +1,19 @@
-import { hashSync } from "bcryptjs";
+// import { hashSync } from "bcryptjs";
 import prisma from "./prisma";
 
-import data from "./data/data.json";
+import data from "./data/data_updated.json";
+import { hashSync } from "bcrypt";
 
 async function createUser() {
-  await prisma.address.deleteMany();
+  await prisma.review.deleteMany();
+  await prisma.cartItem.deleteMany();
   await prisma.cart.deleteMany();
   await prisma.wallet.deleteMany();
   await prisma.wishlist.deleteMany();
+  await prisma.shipMent.deleteMany();
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.address.deleteMany();
   await prisma.user.deleteMany();
 
   const userData = data.users[0];
@@ -112,8 +118,8 @@ async function createMarketingCampaigns() {
 }
 
 const main = async () => {
-  // await createUser();
-  // await createProducts();
+  await createUser();
+  await createProducts();
   // await createMarketingCampaigns();
 };
 
