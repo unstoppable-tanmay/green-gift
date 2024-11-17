@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await fetch("/api/auth/authenticate");
       if (response.status !== 200) {
-        toast.info("Please sign in to continue");
+        // toast.info("Please sign in to continue");
         throw new Error("Unauthorized");
       }
       const data = (await response.json()) as ResponseType<UserResponseType>;
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       return data.data;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
-      toast.error("An error occurred Please sign in again");
+      // toast.error("An error occurred Please sign in again");
       return null;
     }
   };
