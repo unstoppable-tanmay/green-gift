@@ -76,7 +76,7 @@ const Header = () => {
         open={categoriesModal}
         setOpen={(val) => setCategoriesModal(val)}
       />
-      <div className="flex justify-between items-center p-4 pt-2 pr-0 font-poppins relative">
+      <div className="flex justify-between items-center p-4 pt-2 pr-0 font-poppins relative ">
         <div className="max-sm:hidden text-lg font-semibold">
           {user?.name ? "Hi " + user?.name.split(" ")[0] + "!" : "Hi there!"}
         </div>

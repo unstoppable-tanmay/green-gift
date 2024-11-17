@@ -36,7 +36,7 @@ const ItemCard = ({ product }: { product: Product }) => {
       });
   };
   return (
-    <div className="w-[clamp(150px,160px,300px)] sm:w-[clamp(150px,200px,300px)] md:w-[clamp(150px,260px,300px)] aspect-[1/1.38] max-sm:m-0.5 m-2 flex flex-col">
+    <div className="w-[clamp(150px,175px,300px)] sm:w-[clamp(150px,200px,300px)] md:w-[clamp(150px,260px,300px)] aspect-[1/1.38] max-sm:m-0.5 m-2 flex flex-col">
       <div className="top flex h-[11%]">
         <div
           className="left rounded-t-2xl h-full w-[65%] bg-[#C4D3CF] relative after:content-[' '] 
